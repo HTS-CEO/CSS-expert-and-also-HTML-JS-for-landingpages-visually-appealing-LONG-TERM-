@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laat je bedrijf groeien met AI | Jitware.be</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-dark: #B89D2F;
+            --black: #0A0A0A;
+            --black-light: #1A1A1A;
+            --marble: #F5F5F5;
+        }
+
+        body {
+            background-color: var(--black);
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            background-image: url('https://images.unsplash.com/photo-1605106702734-205df224ecce?q=80&w=1470&auto=format&fit=crop');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .overlay {
+            background-color: rgba(10, 10, 10, 0.85);
+        }
+
+        .gold-text {
+            color: var(--gold);
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-gold:active {
+            transform: translateY(1px);
+        }
+
+        .btn-gold::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .btn-gold:hover::after {
+            transform: translateX(100%);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 3px;
+        }
+
+        .testimonial {
+            background: var(--black-light);
+            border-left: 5px solid var(--gold);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+
+        .hero {
+            padding: 8rem 1rem;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1605106702734-205df224ecce?q=80&w=1470&auto=format&fit=crop') center/cover;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        .icon-box {
+            padding: 2.5rem 1.5rem;
+            border-radius: 1rem;
+            background: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            height: 100%;
+        }
+
+        .icon-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .icon-box h5 {
+            color: var(--gold);
+            margin-top: 1.5rem;
+            font-weight: 600;
+        }
+
+        .icon-box p {
+            color: #ccc;
+        }
+
+        .divider {
+            width: 80px;
+            height: 4px;
+            background-color: var(--gold);
+            margin: 1.5rem auto 3rem;
+            border-radius: 2px;
+        }
+
+        .faq {
+            border-left: 4px solid var(--gold);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq:hover {
+            transform: translateX(5px);
+        }
+
+        .faq h5 {
+            color: var(--gold);
+        }
+
+        .trust-badges {
+            background-color: rgba(26, 26, 26, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            margin: 4rem auto;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .trust-badges img {
+            margin: 1rem;
+            max-height: 70px;
+            filter: grayscale(100%) brightness(2);
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .trust-badges img:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        h5 {
+            font-weight: 600;
+        }
+
+        form input {
+            background-color: rgba(26, 26, 26, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        form input:focus {
+            background-color: rgba(26, 26, 26, 0.9);
+            border-color: var(--gold);
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+            color: white;
+        }
+
+        form input::placeholder {
+            color: #999;
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+            padding: 2rem 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        footer p,
+        footer small {
+            color: #aaa;
+        }
+
+        footer small {
+            opacity: 0.7;
+        }
+
+        .gold-ornament {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .ornament-1 {
+            top: 10%;
+            left: 5%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .ornament-2 {
+            bottom: 15%;
+            right: 5%;
+            animation: float 10s ease-in-out infinite 2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        @media (max-width:768px) {
+            .hero {
+                padding: 5rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-title::after {
+                bottom: -10px;
+                width: 50px;
+            }
+
+            .trust-badges {
+                padding: 2rem 1rem;
+            }
+
+            .trust-badges img {
+                max-height: 50px;
+                margin: 0.5rem;
+            }
+
+            .sticky-cta {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 1rem;
+                z-index: 1050;
+                background-color: rgba(10, 10, 10, 0.95);
+                box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+                border-top: 1px solid rgba(212, 175, 55, 0.2);
+            }
+
+            .sticky-cta .btn {
+                width: 100%;
+                max-width: 500px;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .mobile-hidden {
+                display: none;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="overlay">
+        <div class="gold-ornament ornament-1"></div>
+        <div class="gold-ornament ornament-2"></div>
+        <header class="hero animate__animated animate__fadeIn">
+            <div class="container">
+                <img src="https://www.jitware.be/wp-content/uploads/2025/03/jitware-favicon.png" alt="Jitware Logo"
+                    width="180" class="mb-4">
+                <h1 class="section-title gold-text">Laat je bedrijf groeien met AI en ChatGPT</h1>
+                <p class="lead mt-4 mb-5" style="max-width:700px;margin:0 auto;">Ontdek in ons exclusieve e-book hoe je
+                    AI kunt inzetten om je onderneming te transformeren, efficiëntie te verhogen en je omzet te laten
+                    groeien.</p>
+                <a href="#download"
+                    class="btn btn-gold btn-lg mt-2 animate__animated animate__pulse animate__infinite">Download gratis
+                    e-book</a>
+            </div>
+        </header>
+        <section class="container py-5 my-5">
+            <div class="text-center">
+                <h2 class="section-title gold-text fade-in">Wat je zal leren</h2>
+                <div class="divider fade-in delay-1"></div>
+            </div>
+            <div class="row mt-4 g-4">
+                <div class="col-md-4 fade-in delay-1">
+                    <div class="icon-box">
+                        <i class="fas fa-robot gold-text" style="font-size:2.5rem;"></i>
+                        <h5>Slimmere workflows</h5>
+                        <p>Automatiseer repetitieve taken en win kostbare tijd met geavanceerde AI-tools.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in delay-2">
+                    <div class="icon-box">
+                        <i class="fas fa-pen-fancy gold-text" style="font-size:2.5rem;"></i>
+                        <h5>ChatGPT voor content</h5>
+                        <p>Creëer razendsnel waardevolle inhoud zonder externe copywriters te moeten inschakelen.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 fade-in delay-3">
+                    <div class="icon-box">
+                        <i class="fas fa-chart-line gold-text" style="font-size:2.5rem;"></i>
+                        <h5>Groei je omzet</h5>
+                        <p>Gebruik AI om je verkoopproces te optimaliseren en meer kwalitatieve leads te genereren.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5 fade-in delay-3">
+                <a href="#download" class="btn btn-gold btn-lg">Download nu het e-book</a>
+            </div>
+        </section>
+        <section class="container trust-badges fade-in">
+            <h2 class="section-title gold-text">Vertrouwd door professionals</h2>
+            <div class="divider"></div>
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Figma">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968756.png" alt="Adobe">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png" alt="Microsoft">
+                <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="Chrome">
+            </div>
+        </section>
+        <section class="container py-5 my-5">
+            <div class="text-center">
+                <h2 class="section-title gold-text fade-in">Veelgestelde vragen</h2>
+                <div class="divider fade-in delay-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="faq fade-in delay-1">
+                        <h5><i class="fas fa-question-circle gold-text me-2"></i> Is dit e-book echt gratis?</h5>
+                        <p>Ja, volledig gratis. Je hoeft enkel je e-mailadres achter te laten om het e-book te
+                            ontvangen.</p>
+                    </div>
+                    <div class="faq fade-in delay-2">
+                        <h5><i class="fas fa-question-circle gold-text me-2"></i> Voor wie is dit e-book bedoeld?</h5>
+                        <p>Voor elke ondernemer, freelancer of professional die efficiënter en slimmer wil werken met
+                            behulp van AI.</p>
+                    </div>
+                    <div class="faq fade-in delay-3">
+                        <h5><i class="fas fa-question-circle gold-text me-2"></i> Wat als ik al met AI werk?</h5>
+                        <p>Ook dan haal je waardevolle inzichten en praktische toepassingen uit dit e-book die je direct
+                            kunt implementeren.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-5 my-5" style="background:rgba(10,10,10,0.7);backdrop-filter:blur(10px);">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="section-title gold-text fade-in">Wat anderen zeggen</h2>
+                    <div class="divider fade-in delay-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 mx-auto">
+                        <div class="testimonial fade-in delay-1">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-quote-left gold-text" style="font-size:2rem;"></i>
+                                </div>
+                                <p class="mb-0">"Dankzij dit e-book heb ik mijn marketing volledig kunnen automatiseren.
+                                    Het voelt alsof ik een extra werknemer heb."</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-gold rounded-circle me-3"
+                                    style="width:40px;height:40px;background:var(--gold);"></div>
+                                <div>
+                                    <strong class="gold-text">Sophie</strong><br>
+                                    <small>Zaakvoerder marketingbureau</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial fade-in delay-2">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="me-3">
+                                    <i class="fas fa-quote-left gold-text" style="font-size:2rem;"></i>
+                                </div>
+                                <p class="mb-0">"De tips over ChatGPT bespaarden mij tientallen uren. En het beste? Het
+                                    werkt écht!"</p>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="bg-gold rounded-circle me-3"
+                                    style="width:40px;height:40px;background:var(--gold);"></div>
+                                <div>
+                                    <strong class="gold-text">Jan</strong><br>
+                                    <small>Freelancer</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="container py-5 my-5" id="download">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="text-center">
+                        <h2 class="section-title gold-text fade-in">Download gratis jouw exemplaar</h2>
+                        <div class="divider fade-in delay-1"></div>
+                        <p class="mb-5 fade-in delay-1">Vul onderstaand formulier in en ontvang direct het e-book in je
+                            mailbox.</p>
+                    </div>
+                    <form class="mt-4 fade-in delay-2" action="#" method="POST">
+                        <div class="mb-4">
+                            <input type="text" class="form-control" placeholder="Je naam" required>
+                        </div>
+                        <div class="mb-4">
+                            <input type="email" class="form-control" placeholder="Je e-mailadres" required>
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-lg w-100 mt-3">
+                            <i class="fas fa-download me-2"></i> Stuur mij het e-book
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer class="py-5">
+            <div class="container text-center">
+                <img src="https://www.jitware.be/wp-content/uploads/2023/05/Jitware-Logo-White.png" alt="Jitware Logo"
+                    width="140" class="mb-3">
+                <p class="mb-2">Transformeer je bedrijf met geavanceerde AI-oplossingen</p>
+                <small>© 2025 Jitware. Alle rechten voorbehouden. | <a href="#" class="gold-text">Privacybeleid</a> | <a
+                        href="#" class="gold-text">Contact</a></small>
+            </div>
+        </footer>
+        <div class="sticky-cta mobile-hidden">
+            <a href="#download" class="btn btn-gold">
+                <i class="fas fa-download me-2"></i> Download gratis e-book
+            </a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function () { const fadeElements = document.querySelectorAll('.fade-in'); const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.style.opacity = 1; entry.target.style.transform = 'translateY(0)'; } }); }, { threshold: 0.1 }); fadeElements.forEach(el => { el.style.opacity = 0; el.style.transform = 'translateY(20px)'; el.style.transition = 'opacity 0.6s ease, transform 0.6s ease'; observer.observe(el); }); function checkMobile() { if (window.innerWidth <= 768) { document.querySelector('.sticky-cta').classList.remove('mobile-hidden'); } else { document.querySelector('.sticky-cta').classList.add('mobile-hidden'); } } window.addEventListener('resize', checkMobile); checkMobile(); });</script>
+</body>
+
+</html>
